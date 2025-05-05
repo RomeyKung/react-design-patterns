@@ -1,12 +1,13 @@
 import { UserInfo } from "./components/user-info";
-import { CurrentUserLoader } from "./components/current-user-loader";
+// import { CurrentUserLoader } from "./components/current-user-loader";
+import { UserLoader } from "./components/user-loader";
 
 function App() {
   return (
     <>
-      <CurrentUserLoader>
+      <UserLoader userId={"1"}>
         <UserInfo />
-      </CurrentUserLoader>
+      </UserLoader>
     </>
   );
 }
