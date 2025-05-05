@@ -1,9 +1,10 @@
 import axios from "axios";
-import { DataSource } from "./components/data-source";
-import { UserInfo } from "./components/user-info";
 //1. import { CurrentUserLoader } from "./components/current-user-loader";
 //2. import { UserLoader } from "./components/user-loader";
 //3. import { ResourceLoader } from "./components/resource-loader";
+//4. import { DataSource } from "./components/data-source";
+import { UserInfo } from "./components/user-info";
+import { DataSourceWithRender } from "./components/data-source-with-render";
 
 const getDataFromServer = async (url) => {
   const response = await axios.get(`${url}`);
@@ -13,9 +14,10 @@ const getDataFromServer = async (url) => {
 function App() {
   return (
     <>
-      <DataSource getData={()=>getDataFromServer("/users/2")} resourceName="user">
-        <UserInfo />
-      </DataSource>
+      <DataSourceWithRender
+        getData={() => getDataFromServer("/users/2")}
+        render={(resource) => <UserInfo user={resource} />}
+      ></DataSourceWithRender>
     </>
   );
 }
